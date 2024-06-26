@@ -18,21 +18,22 @@ const MainLayout: React.FC = () => {
   const toggleSider = () => setSiderCollapsed(!siderCollapsed);
 
   useEffect(() => {
-    setIsTwoColumnsLayout([MEDICAL_DASHBOARD_PATH, NFT_DASHBOARD_PATH].includes(location.pathname) && isDesktop);
+    // setIsTwoColumnsLayout([MEDICAL_DASHBOARD_PATH, NFT_DASHBOARD_PATH].includes(location.pathname) && isDesktop);
+    setIsTwoColumnsLayout(false);
   }, [location.pathname, isDesktop]);
 
   return (
     <S.LayoutMaster>
-      <MainSider isCollapsed={siderCollapsed} setCollapsed={setSiderCollapsed} />
+      {/*<MainSider isCollapsed={siderCollapsed} setCollapsed={setSiderCollapsed} />*/}
       <S.LayoutMain>
         <MainHeader isTwoColumnsLayout={isTwoColumnsLayout}>
           <Header toggleSider={toggleSider} isSiderOpened={!siderCollapsed} isTwoColumnsLayout={isTwoColumnsLayout} />
         </MainHeader>
         <MainContent id="main-content" $isTwoColumnsLayout={isTwoColumnsLayout}>
-          <div>
+          <S.FullContent>
             <Outlet />
-          </div>
-          {!isTwoColumnsLayout && <References />}
+          </S.FullContent>
+          {/*{!isTwoColumnsLayout && <References />}*/}
         </MainContent>
       </S.LayoutMain>
     </S.LayoutMaster>

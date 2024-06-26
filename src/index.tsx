@@ -22,7 +22,7 @@ root.render(
     </Provider>
   </React.StrictMode>,
 );
-
+/*
 serviceWorkerRegistration.register({
   onUpdate: (registration) => {
     const waitingServiceWorker = registration.waiting;
@@ -40,3 +40,4 @@ serviceWorkerRegistration.register({
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+*/

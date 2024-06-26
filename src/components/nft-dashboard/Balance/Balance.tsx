@@ -26,18 +26,18 @@ export const Balance: React.FC = () => {
 
   const userId = useAppSelector((state) => state.user.user?.id);
 
-  useEffect(() => {
-    userId && getBalance(userId).then((res) => setBalance(res));
-  }, [userId]);
-
-  useEffect(() => {
-    if (userId) {
-      setLoading(true);
-      getPaymentCards(userId)
-        .then((res) => setCards(res))
-        .finally(() => setLoading(false));
-    }
-  }, [userId]);
+  // useEffect(() => {
+  //   userId && getBalance(userId).then((res) => setBalance(res));
+  // }, [userId]);
+  //
+  // useEffect(() => {
+  //   if (userId) {
+  //     setLoading(true);
+  //     getPaymentCards(userId)
+  //       .then((res) => setCards(res))
+  //       .finally(() => setLoading(false));
+  //   }
+  // }, [userId]);
 
   const { t } = useTranslation();
 

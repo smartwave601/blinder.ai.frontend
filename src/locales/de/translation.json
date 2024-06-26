@@ -1,4 +1,56 @@
 {
+  "blinder": {
+    "buttons": {
+      "export": "Export",
+      "upload": "Hochladen",
+      "reset": "Zurücksetzen",
+      "fileCopyright": "Datei-Copyright",
+      "createProtectButton": "Neue Voice Protect-Datei erstellen",
+      "share": "Aktie",
+      "submit": "Einreichen",
+      "login": "Anmeldung",
+      "guest": "Als Gast fortfahren",
+      "close": "Schließen"
+    },
+    "text": {
+      "insertLink": "oder fügen Sie einen Link zu Ihrer kreativen Arbeit ein",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "copyright": "Indem Sie über Blinder Nachrichten senden, stimmen Sie unseren Servicebedingungen zu und bestätigen, dass Sie unsere Datenschutzrichtlinie gelesen haben, © 2024 Clerkbridge, LLC. Alle Rechte vorbehalten."
+    },
+    "jurisdictions": {
+      "selectJurisdiction": "Select Jurisdiction",
+      "usCopyright": "US Copyright Office",
+      "ukCopyright": "UK Intellectual Property Office (IPO)",
+      "euCopyright": "European Union Intellectual Property Office (EUIPO)",
+      "canadaCopyright": "Canadian Intellectual Property Office (CIPO)",
+      "australiaCopyright": "IP Australia",
+      "japanCopyright": "Agency for Cultural Affairs (Japan)",
+      "chinaCopyright": "National Copyright Administration of the People's Republic of China (NCAC)",
+      "germanCopyright": "German Patent and Trade Mark Office (DPMA)",
+      "inpiCopyright": "National Institute of Industrial Property (INPI)",
+      "indiaCopyright": "Copyright Office, Department for Promotion of Industry and Internal Trade (India)",
+      "brazilCopyright": "National Library Foundation (FBN) (Brazil)",
+      "koreaCopyright": "Korea Copyright Commission (KCC)",
+      "mexicoCopyright": "National Institute of Copyright (INDAUTOR) (Mexico)",
+      "russiaCopyright": "Federal Service for Intellectual Property (Rospatent) (Russia)",
+      "spanishCopyright": "Spanish Patent and Trademark Office (OEPM)",
+      "italianCopyright": "Italian Copyright Office (SIAE)",
+      "boipCopyright": "Benelux Office for Intellectual Property (BOIP)",
+      "swissCopyright": "Swiss Federal Institute of Intellectual Property (IPI)",
+      "argentinaCopyright": "National Copyright Directorate (DNDA) (Argentina)",
+      "polandCopyright": "Copyright Division, Ministry of Culture and National Heritage (Poland)",
+      "turkeyCopyright": "Ministry of Culture and Tourism, Directorate General for Copyright (Turkey)",
+      "swedishCopyright": "Swedish Patent and Registration Office (PRV)",
+      "safCopyright": "Companies and Intellectual Property Commission (CIPC) (South Africa)",
+      "israelCopyright": "Israel Patent Office",
+      "singaporeCopyright": "Intellectual Property Office of Singapore (IPOS)",
+      "danishCopyright": "Danish Patent and Trademark Office",
+      "norwegianCopyright": "Norwegian Industrial Property Office (NIPO)",
+      "finnishCopyright": "Finnish Patent and Registration Office (PRH)",
+      "belgianCopyright": "Belgian Office for Intellectual Property (OPRI)"
+    }
+  },
   "alerts": {
     "accept": "Akzeptieren",
     "basic": "Grundlegende Warnung",
@@ -492,7 +544,7 @@
       "successPayment": "Ihre Zahlung wurde erfolgreich durchgeführt",
       "viewAll": "Alle ansehen"
     },
-    "search": "Suche"
+    "search": "Suche nach Zertifizierungs-ID"
   },
   "inputs": {
     "basic": "Grundlegende Eingabe",

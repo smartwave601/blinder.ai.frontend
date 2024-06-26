@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { HomeOutlined } from '@ant-design/icons';
 import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
@@ -7,6 +9,8 @@ import { HeaderFullscreen } from '../components/HeaderFullscreen/HeaderFullscree
 import * as S from '../Header.styles';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
+import notFoundImg from "@app/assets/images/nothing-found.webp";
+import { BaseButton } from "@app/components/common/BaseButton/BaseButton";
 
 interface DesktopHeaderProps {
   isTwoColumnsLayout: boolean;
@@ -26,20 +30,29 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
     </S.SearchColumn>
   ) : (
     <>
-      <BaseCol lg={10} xxl={8}>
-        <HeaderSearch />
+      <BaseCol lg={13}>
+        <BaseRow justify="center" align="middle">
+          <S.Image src="https://basicannon.s3.amazonaws.com/blinder+Main+Logo.png" alt="Blinder" preview={false} style={{height: '70px'}}  />
+          <S.Image src="https://basicannon.s3.amazonaws.com/cancellation-x.svg" alt="x" preview={false} style={{height: '40px'}} />
+          <S.Image src="https://s3.amazonaws.com/blinder.copyright/seal2004-removebg-preview.png" alt="govCopyright" preview={false} style={{height: '120px'}} />
+        </BaseRow>
       </BaseCol>
-      <BaseCol>
-        <S.GHButton />
+      <BaseCol lg={8}>
+        <BaseRow align="middle" justify="space-around">
+          <Link to="/">
+            <BaseButton type="primary"><HomeOutlined />Home</BaseButton>
+          </Link>
+          <HeaderSearch />
+        </BaseRow>
       </BaseCol>
     </>
   );
 
   return (
-    <BaseRow justify="space-between" align="middle">
+    <BaseRow justify="space-between" align="top">
       {leftSide}
 
-      <S.ProfileColumn xl={8} xxl={7} $isTwoColumnsLayout={isTwoColumnsLayout}>
+      <S.ProfileColumn xl={3} $isTwoColumnsLayout={isTwoColumnsLayout}>
         <BaseRow align="middle" justify="end" gutter={[5, 5]}>
           <BaseCol>
             <BaseRow gutter={[{ xxl: 5 }, { xxl: 5 }]}>
@@ -47,9 +60,9 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
                 <HeaderFullscreen />
               </BaseCol>
 
-              <BaseCol>
-                <NotificationsDropdown />
-              </BaseCol>
+              {/*<BaseCol>*/}
+              {/*  <NotificationsDropdown />*/}
+              {/*</BaseCol>*/}
 
               <BaseCol>
                 <SettingsDropdown />

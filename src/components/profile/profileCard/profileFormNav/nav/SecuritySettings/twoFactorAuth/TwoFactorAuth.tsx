@@ -23,14 +23,14 @@ export const TwoFactorAuth: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
 
   const isNeedToShowVerifyBtn = useMemo(
-    () => (user?.email.name && !user?.email.verified) || (user?.phone.number && !user?.phone.verified),
+    () => (user?.email),
     [user],
   );
 
   const [isFieldsChanged, setFieldsChanged] = useState(Boolean(isNeedToShowVerifyBtn));
   const [isLoading, setLoading] = useState(false);
 
-  const [isEnabled, setEnabled] = useState(Boolean(user?.email.verified || user?.phone.verified));
+  const [isEnabled, setEnabled] = useState(Boolean(user?.email));
   const [selectedOption, setSelectedOption] = useState<TwoFactorAuthOptionState>('email');
   const [isClickedVerify, setClickedVerify] = useState(false);
 
@@ -49,7 +49,7 @@ export const TwoFactorAuth: React.FC = () => {
       setClickedVerify(false);
       notificationController.success({ message: t('common.success') });
 
-      const newUser = { ...user, [selectedOption]: { ...user[selectedOption], verified: true } };
+      const newUser = { ...user };
 
       dispatch(setUser(newUser));
     }
@@ -63,8 +63,8 @@ export const TwoFactorAuth: React.FC = () => {
         isFieldsChanged={isFieldsChanged}
         onFieldsChange={() => setFieldsChanged(true)}
         initialValues={{
-          email: user?.email.name,
-          phone: user?.phone.number,
+          email: user?.email,
+          phone: user?.phone,
         }}
         footer={
           (isEnabled && (

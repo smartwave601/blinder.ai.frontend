@@ -19,14 +19,14 @@ export const PaymentMethod: React.FC = () => {
 
   const id = useAppSelector((state) => state.user?.user?.id);
 
-  useEffect(() => {
-    if (id) {
-      setLoading(true);
-      getPaymentCards(id)
-        .then((res) => setCards(res))
-        .finally(() => setLoading(false));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     setLoading(true);
+  //     getPaymentCards(id)
+  //       .then((res) => setCards(res))
+  //       .finally(() => setLoading(false));
+  //   }
+  // }, [id]);
 
   const { isTablet } = useResponsive();
 

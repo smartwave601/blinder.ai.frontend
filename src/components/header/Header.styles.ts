@@ -4,6 +4,7 @@ import { GitHubButton } from '@app/components/header/components/GithubButton/Git
 import { LAYOUT, media } from '@app/styles/themes/constants';
 import { BaseCollapse } from '../common/BaseCollapse/BaseCollapse';
 import { BaseCol } from '../common/BaseCol/BaseCol';
+import { BaseImage } from "@app/components/common/BaseImage/BaseImage";
 
 export const HeaderActionWrapper = styled.div`
   cursor: pointer;
@@ -60,9 +61,13 @@ export const MobileBurger = styled(BurgerIcon)`
       color: var(--text-secondary-color);
     `};
 `;
+//
+// export const SearchColumn = styled(BaseCol)`
+//   padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
+// `;
 
 export const SearchColumn = styled(BaseCol)`
-  padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
+  padding: 0;
 `;
 
 interface ProfileColumn {
@@ -86,4 +91,9 @@ export const GHButton = styled(GitHubButton)`
   @media only screen and ${media.lg} {
     display: block;
   }
+`;
+
+export const Image = styled(BaseImage)`
+  padding-left: 10px;
+  padding-right: 10px;
 `;

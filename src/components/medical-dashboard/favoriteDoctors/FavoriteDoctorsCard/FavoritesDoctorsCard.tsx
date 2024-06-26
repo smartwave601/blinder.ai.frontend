@@ -34,9 +34,9 @@ export const FavoritesDoctorsCard: React.FC = () => {
     getDoctorsData().then((res) => setDoctors(res));
   }, []);
 
-  useEffect(() => {
-    user && getUserCalendar(user.id).then((res) => setCalendar(res));
-  }, [user]);
+  // useEffect(() => {
+  //   user && getUserCalendar(user.id).then((res) => setCalendar(res));
+  // }, [user]);
 
   const pastEvents = useMemo(
     () => calendar.filter((event) => Dates.getDate(event.date).isBefore(today)),

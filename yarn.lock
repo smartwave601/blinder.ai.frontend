@@ -4153,12 +4153,64 @@ __metadata:
   languageName: node
   linkType: hard
 
+"atob-lite@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "atob-lite@npm:2.0.0"
+  checksum: 336880fdca40a9f328b9c14781f907ee6e967a4eeca5bdf1926cbb7a9132ff3d9231a0e056b88f2a9ee26affdcdf5886accc6d8e1014cfc50aad48a52112a0f1
+  languageName: node
+  linkType: hard
+
 "atob@npm:^2.1.2":
   version: 2.1.2
   resolution: "atob@npm:2.1.2"
   bin:
     atob: bin/atob.js
   checksum: dfeeeb70090c5ebea7be4b9f787f866686c645d9f39a0d184c817252d0cf08455ed25267d79c03254d3be1f03ac399992a792edcd5ffb9c91e097ab5ef42833a
+  languageName: node
+  linkType: hard
+
+"audio-buffer-from@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "audio-buffer-from@npm:1.1.1"
+  dependencies:
+    audio-buffer: ^4.0.4
+    audio-context: ^1.0.1
+    audio-format: ^2.0.0
+    is-audio-buffer: ^1.0.11
+    is-plain-obj: ^1.1.0
+    pcm-convert: ^1.6.0
+    pick-by-alias: ^1.2.0
+    string-to-arraybuffer: ^1.0.0
+  checksum: ce3cce24550f3045e546ff48b399196168f79cfe11e35331b06b2cb374781298f254b85a9a47ac5851a5591dcef1466041b50f246d9e0ca948d846286e00e482
+  languageName: node
+  linkType: hard
+
+"audio-buffer@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "audio-buffer@npm:4.0.4"
+  dependencies:
+    audio-context: ^1.0.0
+  checksum: e4d8bedf5e8e0b3af1ec44f6ae074aadf2985a802e7438b6ddc5631bc82af00c322374688e2d1ed9d92189a734a3f053d4ad90f43716b9b16d9a8a241f3fdaa2
+  languageName: node
+  linkType: hard
+
+"audio-context@npm:^1.0.0, audio-context@npm:^1.0.1":
+  version: 1.0.3
+  resolution: "audio-context@npm:1.0.3"
+  checksum: 14b25a08ebc7e2c9fac0ae4453256e1bd6a24250415f2d5fb6a4f1294d192d46447d5a2a755365025613c511db3040f3a3f8a6d3d1c521672add6f14a3409ead
+  languageName: node
+  linkType: hard
+
+"audio-format@npm:^2.0.0, audio-format@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "audio-format@npm:2.3.2"
+  dependencies:
+    is-audio-buffer: ^1.0.11
+    is-buffer: ^1.1.5
+    is-plain-obj: ^1.1.0
+    pick-by-alias: ^1.2.0
+    sample-rate: ^2.0.0
+  checksum: 016534b102a4514886125f9fb271aa185a9206769ba1e648129ccc799a009a8e9db4082aac0bbc3669affd274b82941b7d83dfe46936f29100a5c0dcd9964e65
   languageName: node
   linkType: hard
 
@@ -4577,6 +4629,100 @@ __metadata:
   checksum: 65b6b48095717c2e6105a021a7da4ea435aa8d3d3cd085cb9e85bcb6e5773cf318c4745c3f7c504412855940b585bdf9b918236612a1c7a7942491de176f1ae7
   languageName: node
   linkType: hard
+
+"blinder.copyright@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "blinder.copyright@workspace:."
+  dependencies:
+    "@ant-design/icons": ^4.6.2
+    "@craco/craco": ^6.1.2
+    "@lit-labs/react": ^1.0.2
+    "@react-google-maps/api": ^2.18.1
+    "@reduxjs/toolkit": ^1.7.1
+    "@types/country-list": ^2.1.0
+    "@types/leaflet": ^1.7.9
+    "@types/react": ^18.0.28
+    "@types/react-dom": ^18.0.11
+    "@types/react-helmet": ^6.1.5
+    "@types/react-responsive": ^8.0.5
+    "@types/react-router-dom": ^5.1.7
+    "@types/react-router-hash-link": ^2.4.4
+    "@types/react-simple-maps": ^1.0.7
+    "@types/react-slick": ^0.23.8
+    "@types/styled-components": ^5.1.10
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.10.0
+    "@typescript-eslint/parser": ^5.8.0
+    antd: ^4.22.4
+    antd-mask-input: ^2.0.7
+    axios: ^0.24.0
+    axios-mock-adapter: ^1.20.0
+    country-list: ^2.2.0
+    craco-alias: ^3.0.1
+    credit-card-type: ^9.1.0
+    dayjs: ^1.11.0
+    echarts: ^5.1.2
+    echarts-for-react: ^3.0.1
+    elt-react-credit-cards: ^0.0.1
+    eslint: ^7.28.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    eslint-plugin-react: ^7.24.0
+    eslint-plugin-react-hooks: ^4.3.0
+    husky: ^6.0.0
+    i18next: ^20.4.0
+    leaflet: ^1.7.1
+    less: ^4.1.2
+    less-plugin-clean-css: ^1.5.1
+    lint-staged: ^11.0.0
+    mic-recorder: ^4.9.0
+    pigeon-maps: ^0.19.7
+    prettier: ^2.3.1
+    react: ^18.2.0
+    react-country-flag: ^3.0.2
+    react-dom: ^18.2.0
+    react-helmet-async: ^1.3.0
+    react-i18next: ^11.11.4
+    react-infinite-scroll-component: ^6.1.0
+    react-insta-stories: ^2.3.0
+    react-leaflet: next
+    react-phone-number-input: ^3.2.17
+    react-redux: ^7.2.6
+    react-responsive: ^9.0.2
+    react-router-dom: ^6.0.2
+    react-router-hash-link: ^2.4.3
+    react-scripts: 4.0.3
+    react-simple-maps: ^2.3.0
+    react-slick: ^0.28.1
+    react-verification-input: ^2.0.3
+    round-slider: "altence/round-slider#refactor/slider"
+    slick-carousel: ^1.8.1
+    styled-components: ^5.3.0
+    stylelint: ^13.13.1
+    stylelint-config-recommended: ^5.0.0
+    stylelint-config-styled-components: ^0.1.1
+    stylelint-processor-styled-components: ^1.10.0
+    typeface-lato: ^1.1.13
+    typeface-montserrat: ^1.1.13
+    typescript: ^4.1.2
+    uuid: ^8.3.2
+    web-vitals: ^1.0.1
+    webpack-bundle-analyzer: ^4.4.2
+    webpackbar: ^5.0.0-3
+    workbox-background-sync: ^5.1.3
+    workbox-broadcast-update: ^5.1.3
+    workbox-cacheable-response: ^5.1.3
+    workbox-core: ^5.1.3
+    workbox-expiration: ^5.1.3
+    workbox-google-analytics: ^5.1.3
+    workbox-navigation-preload: ^5.1.3
+    workbox-precaching: ^5.1.3
+    workbox-range-requests: ^5.1.3
+    workbox-routing: ^5.1.3
+    workbox-strategies: ^5.1.3
+    workbox-streams: ^5.1.3
+  languageName: unknown
+  linkType: soft
 
 "bluebird@npm:^3.5.5":
   version: 3.7.2
@@ -9507,6 +9653,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-audio-buffer@npm:^1.0.11":
+  version: 1.1.0
+  resolution: "is-audio-buffer@npm:1.1.0"
+  checksum: 1d4e37861ad5dedea5f273571e0a43008328f00857ffc5c96812585533f30988ac768b9e1528b4551e64796b27d90b04dccb9e8a1eacbd30a29b8b03c35838b3
+  languageName: node
+  linkType: hard
+
+"is-base64@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "is-base64@npm:0.1.0"
+  checksum: 7a6b70e68ab40af19eac1bbb3c17df5374f1427fa75458be56cc7f1dd658a3e1c3b149edf80bb7de78ea545f89a02f4ff59a4086f21c1bd7b3795bc395630d5b
+  languageName: node
+  linkType: hard
+
 "is-bigint@npm:^1.0.1":
   version: 1.0.4
   resolution: "is-bigint@npm:1.0.4"
@@ -10905,6 +11065,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lamejs@npm:^1.2.0":
+  version: 1.2.1
+  resolution: "lamejs@npm:1.2.1"
+  dependencies:
+    use-strict: 1.0.1
+  checksum: bb49d2fcb48d087f7c3efb7d0ac5a2972def8c9ab2795e42cf20565b9198cdbae0faedd1fc6c7019ee3868f17e7af31976793dbc96c95fc08ccb692b8df5895d
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:~0.3.2":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -11015,99 +11184,6 @@ __metadata:
   checksum: 8408056a375b36728b83daa2048a9157abe21596b042307487c64a648aa31319ace77f04c59331710b30d7fc79466fc5ad978fddb74b6e4a0a21463b7e6bd535
   languageName: node
   linkType: hard
-
-"lightence-admin@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "lightence-admin@workspace:."
-  dependencies:
-    "@ant-design/icons": ^4.6.2
-    "@craco/craco": ^6.1.2
-    "@lit-labs/react": ^1.0.2
-    "@react-google-maps/api": ^2.18.1
-    "@reduxjs/toolkit": ^1.7.1
-    "@types/country-list": ^2.1.0
-    "@types/leaflet": ^1.7.9
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
-    "@types/react-helmet": ^6.1.5
-    "@types/react-responsive": ^8.0.5
-    "@types/react-router-dom": ^5.1.7
-    "@types/react-router-hash-link": ^2.4.4
-    "@types/react-simple-maps": ^1.0.7
-    "@types/react-slick": ^0.23.8
-    "@types/styled-components": ^5.1.10
-    "@types/uuid": ^8.3.4
-    "@typescript-eslint/eslint-plugin": ^5.10.0
-    "@typescript-eslint/parser": ^5.8.0
-    antd: ^4.22.4
-    antd-mask-input: ^2.0.7
-    axios: ^0.24.0
-    axios-mock-adapter: ^1.20.0
-    country-list: ^2.2.0
-    craco-alias: ^3.0.1
-    credit-card-type: ^9.1.0
-    dayjs: ^1.11.0
-    echarts: ^5.1.2
-    echarts-for-react: ^3.0.1
-    elt-react-credit-cards: ^0.0.1
-    eslint: ^7.28.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^3.4.0
-    eslint-plugin-react: ^7.24.0
-    eslint-plugin-react-hooks: ^4.3.0
-    husky: ^6.0.0
-    i18next: ^20.4.0
-    leaflet: ^1.7.1
-    less: ^4.1.2
-    less-plugin-clean-css: ^1.5.1
-    lint-staged: ^11.0.0
-    pigeon-maps: ^0.19.7
-    prettier: ^2.3.1
-    react: ^18.2.0
-    react-country-flag: ^3.0.2
-    react-dom: ^18.2.0
-    react-helmet-async: ^1.3.0
-    react-i18next: ^11.11.4
-    react-infinite-scroll-component: ^6.1.0
-    react-insta-stories: ^2.3.0
-    react-leaflet: next
-    react-phone-number-input: ^3.2.17
-    react-redux: ^7.2.6
-    react-responsive: ^9.0.2
-    react-router-dom: ^6.0.2
-    react-router-hash-link: ^2.4.3
-    react-scripts: 4.0.3
-    react-simple-maps: ^2.3.0
-    react-slick: ^0.28.1
-    react-verification-input: ^2.0.3
-    round-slider: "altence/round-slider#refactor/slider"
-    slick-carousel: ^1.8.1
-    styled-components: ^5.3.0
-    stylelint: ^13.13.1
-    stylelint-config-recommended: ^5.0.0
-    stylelint-config-styled-components: ^0.1.1
-    stylelint-processor-styled-components: ^1.10.0
-    typeface-lato: ^1.1.13
-    typeface-montserrat: ^1.1.13
-    typescript: ^4.1.2
-    uuid: ^8.3.2
-    web-vitals: ^1.0.1
-    webpack-bundle-analyzer: ^4.4.2
-    webpackbar: ^5.0.0-3
-    workbox-background-sync: ^5.1.3
-    workbox-broadcast-update: ^5.1.3
-    workbox-cacheable-response: ^5.1.3
-    workbox-core: ^5.1.3
-    workbox-expiration: ^5.1.3
-    workbox-google-analytics: ^5.1.3
-    workbox-navigation-preload: ^5.1.3
-    workbox-precaching: ^5.1.3
-    workbox-range-requests: ^5.1.3
-    workbox-routing: ^5.1.3
-    workbox-strategies: ^5.1.3
-    workbox-streams: ^5.1.3
-  languageName: unknown
-  linkType: soft
 
 "lines-and-columns@npm:^1.1.6":
   version: 1.2.4
@@ -11644,6 +11720,19 @@ __metadata:
   version: 1.1.2
   resolution: "methods@npm:1.1.2"
   checksum: 0917ff4041fa8e2f2fda5425a955fe16ca411591fbd123c0d722fcf02b73971ed6f764d85f0a6f547ce49ee0221ce2c19a5fa692157931cecb422984f1dcd13a
+  languageName: node
+  linkType: hard
+
+"mic-recorder@npm:^4.9.0":
+  version: 4.9.0
+  resolution: "mic-recorder@npm:4.9.0"
+  dependencies:
+    audio-buffer-from: ^1.1.1
+    lamejs: ^1.2.0
+    wav-encoder: ^1.3.0
+  peerDependencies:
+    webrtc-adapter: ^4.1.1
+  checksum: 55231df83ab4c6a343005a696242633b5a52f89dcd2b4d4c30aec6473efbbc491bbb00a6d688656a3ef785c1927ff0cbb40475da9b605cfad0f7633f72d5282d
   languageName: node
   linkType: hard
 
@@ -12920,10 +13009,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pcm-convert@npm:^1.6.0":
+  version: 1.6.5
+  resolution: "pcm-convert@npm:1.6.5"
+  dependencies:
+    audio-format: ^2.3.2
+    is-audio-buffer: ^1.0.11
+    is-buffer: ^1.1.5
+    object-assign: ^4.1.1
+  checksum: 74faeef65363503c7409335e3dc7966cfcd9a1a004c08b87935bdeb114a1d8f0f5a5ae45d69349d2e5c6a2e5a7a3d2cb4f5b1528cb3c221a07d9228d1099e46a
+  languageName: node
+  linkType: hard
+
 "performance-now@npm:^2.1.0":
   version: 2.1.0
   resolution: "performance-now@npm:2.1.0"
   checksum: 534e641aa8f7cba160f0afec0599b6cecefbb516a2e837b512be0adbe6c1da5550e89c78059c7fabc5c9ffdf6627edabe23eb7c518c4500067a898fa65c2b550
+  languageName: node
+  linkType: hard
+
+"pick-by-alias@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "pick-by-alias@npm:1.2.0"
+  checksum: 720c85f13a75f7ca865fdc44f924419b47ec0e21555c523b3c6ed3dd7304e1447255a092fb49a2d55f30252d5856be9aa044ef00822eb08dad4368db230d1b19
   languageName: node
   linkType: hard
 
@@ -15946,6 +16054,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sample-rate@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "sample-rate@npm:2.0.1"
+  checksum: c400486ecbd01f4f45cd35f9df935f0e5c41f1e5c21f12725f2da849d2ecd2d6ce8ebb3654dbafaedd97818da7e48c5f236f6c28d477c446e377fe776b950759
+  languageName: node
+  linkType: hard
+
 "sane@npm:^4.0.3":
   version: 4.1.0
   resolution: "sane@npm:4.1.0"
@@ -16822,6 +16937,16 @@ __metadata:
   version: 3.0.1
   resolution: "string-natural-compare@npm:3.0.1"
   checksum: 65910d9995074086e769a68728395effbba9b7186be5b4c16a7fad4f4ef50cae95ca16e3e9086e019cbb636ae8daac9c7b8fe91b5f21865c5c0f26e3c0725406
+  languageName: node
+  linkType: hard
+
+"string-to-arraybuffer@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "string-to-arraybuffer@npm:1.0.2"
+  dependencies:
+    atob-lite: ^2.0.0
+    is-base64: ^0.1.0
+  checksum: 4a04ee521af31b742e5c56989252f0a76eac301c4c2c8870a809db0b4ef26f23e54c42327e6cac8bdeabc94890dc4834b0da834dfdf1bc285d161c01a2b11ba6
   languageName: node
   linkType: hard
 
@@ -18116,6 +18241,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-strict@npm:1.0.1":
+  version: 1.0.1
+  resolution: "use-strict@npm:1.0.1"
+  checksum: e2798c587b8dc95483ac376e1b9b13fbab179bbd498ed7bd55cba2ef72792569621ba25d9aa5df21f884a161d28624d39165070a690fc5f088bf903e097fc267
+  languageName: node
+  linkType: hard
+
 "use@npm:^3.1.0":
   version: 3.1.1
   resolution: "use@npm:3.1.1"
@@ -18337,6 +18469,13 @@ __metadata:
     watchpack-chokidar2:
       optional: true
   checksum: 8b7cb8c8df8f4dd0e8ac47693c0141c4f020a4b031411247d600eca31522fde6f1f9a3a6f6518b46e71f7971b0ed5734c08c60d7fdd2530e7262776286f69236
+  languageName: node
+  linkType: hard
+
+"wav-encoder@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "wav-encoder@npm:1.3.0"
+  checksum: e10ee2df1c450cf76e8854c8589b55963749835917ca15cd21352ea915a576152a9723f3f7e0788d57b186c4ae1344b0de27284806861962eafbc92f743f50ee
   languageName: node
   linkType: hard
 

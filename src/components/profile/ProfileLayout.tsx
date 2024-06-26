@@ -40,7 +40,7 @@ const ProfileLayout: React.FC = () => {
         </Btn>
       )}
 
-      <BaseRow gutter={[30, 30]}>
+      <BaseRow gutter={[30, 30]} style={{marginTop: "70px"}}>
         {isTitleShown && (
           <BaseCol xs={24} md={24} xl={8}>
             <ProfileCard>

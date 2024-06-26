@@ -16,12 +16,13 @@ interface LoginFormData {
 }
 
 export const initValues: LoginFormData = {
-  email: 'hello@altence.com',
-  password: 'some-test-pass',
+  email: 'chris.johnson@altence.com',
+  password: 'test-pass',
 };
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -37,6 +38,10 @@ export const LoginForm: React.FC = () => {
         setLoading(false);
       });
   };
+
+  const gotoDashboard = () => {
+    navigate('/certs',{ replace: true });
+  }
 
   return (
     <Auth.FormWrapper>
@@ -79,21 +84,26 @@ export const LoginForm: React.FC = () => {
           </Auth.SubmitButton>
         </BaseForm.Item>
         <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <GoogleIcon />
-            </Auth.SocialIconWrapper>
-            {t('login.googleLink')}
+          <Auth.SocialButton type="default" htmlType="button" onClick={gotoDashboard}>
+            {t('blinder.buttons.guest')}
           </Auth.SocialButton>
         </BaseForm.Item>
-        <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <FacebookIcon />
-            </Auth.SocialIconWrapper>
-            {t('login.facebookLink')}
-          </Auth.SocialButton>
-        </BaseForm.Item>
+        {/*<BaseForm.Item noStyle>*/}
+        {/*  <Auth.SocialButton type="default" htmlType="submit">*/}
+        {/*    <Auth.SocialIconWrapper>*/}
+        {/*      <GoogleIcon />*/}
+        {/*    </Auth.SocialIconWrapper>*/}
+        {/*    {t('login.googleLink')}*/}
+        {/*  </Auth.SocialButton>*/}
+        {/*</BaseForm.Item>*/}
+        {/*<BaseForm.Item noStyle>*/}
+        {/*  <Auth.SocialButton type="default" htmlType="submit">*/}
+        {/*    <Auth.SocialIconWrapper>*/}
+        {/*      <FacebookIcon />*/}
+        {/*    </Auth.SocialIconWrapper>*/}
+        {/*    {t('login.facebookLink')}*/}
+        {/*  </Auth.SocialButton>*/}
+        {/*</BaseForm.Item>*/}
         <Auth.FooterWrapper>
           <Auth.Text>
             {t('login.noAccount')}{' '}

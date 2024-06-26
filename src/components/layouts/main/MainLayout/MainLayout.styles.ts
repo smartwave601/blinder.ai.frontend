@@ -15,3 +15,9 @@ export const LayoutMain = styled(BaseLayout)`
     margin-left: unset;
   }
 `;
+
+export const FullContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`;

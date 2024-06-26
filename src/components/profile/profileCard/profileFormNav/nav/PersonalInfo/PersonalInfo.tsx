@@ -75,21 +75,22 @@ export const PersonalInfo: React.FC = () => {
         ? {
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email.name,
-            phone: user.phone.number,
-            nickname: user.userName,
-            sex: user.sex,
-            birthday: Dates.getDate(user.birthday),
-            language: user.lang,
-            country: user.country,
-            city: user.city,
-            address1: user.address1,
-            address2: user?.address2,
-            zipcode: user.zipcode,
-            website: user?.website,
-            twitter: user?.socials?.twitter,
-            linkedin: user?.socials?.linkedin,
-            facebook: user?.socials?.facebook,
+            email: user.email,
+            // email: user.email.name,
+            // phone: user.phone.number,
+            // nickname: user.userName,
+            // sex: user.sex,
+            // birthday: Dates.getDate(user.birthday),
+            // language: user.lang,
+            // country: user.country,
+            // city: user.city,
+            // address1: user.address1,
+            // address2: user?.address2,
+            // zipcode: user.zipcode,
+            // website: user?.website,
+            // twitter: user?.socials?.twitter,
+            // linkedin: user?.socials?.linkedin,
+            // facebook: user?.socials?.facebook,
           }
         : initialPersonalInfoValues,
     [user],
@@ -140,75 +141,75 @@ export const PersonalInfo: React.FC = () => {
             <LastNameItem />
           </BaseCol>
 
-          <BaseCol xs={24} md={12}>
-            <NicknameItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <NicknameItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <SexItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <SexItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <BirthdayItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <BirthdayItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <LanguageItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <LanguageItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol span={24}>
-            <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('profile.nav.personalInfo.contactInfo')}</BaseButtonsForm.Title>
-            </BaseButtonsForm.Item>
-          </BaseCol>
+          {/*<BaseCol span={24}>*/}
+          {/*  <BaseButtonsForm.Item>*/}
+          {/*    <BaseButtonsForm.Title>{t('profile.nav.personalInfo.contactInfo')}</BaseButtonsForm.Title>*/}
+          {/*  </BaseButtonsForm.Item>*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <PhoneItem verified={user?.phone.verified} />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <PhoneItem verified={user?.phone.verified} />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <EmailItem verified={user?.email.verified} />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <EmailItem verified={user?.email.verified} />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol span={24}>
-            <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('common.address')}</BaseButtonsForm.Title>
-            </BaseButtonsForm.Item>
-          </BaseCol>
+          {/*<BaseCol span={24}>*/}
+          {/*  <BaseButtonsForm.Item>*/}
+          {/*    <BaseButtonsForm.Title>{t('common.address')}</BaseButtonsForm.Title>*/}
+          {/*  </BaseButtonsForm.Item>*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <CountriesItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <CountriesItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <CitiesItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <CitiesItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <AddressItem number={1} />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <AddressItem number={1} />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <AddressItem number={2} />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <AddressItem number={2} />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <ZipcodeItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <ZipcodeItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol span={24}>
-            <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('profile.nav.personalInfo.otherInfo')}</BaseButtonsForm.Title>
-            </BaseButtonsForm.Item>
-          </BaseCol>
+          {/*<BaseCol span={24}>*/}
+          {/*  <BaseButtonsForm.Item>*/}
+          {/*    <BaseButtonsForm.Title>{t('profile.nav.personalInfo.otherInfo')}</BaseButtonsForm.Title>*/}
+          {/*  </BaseButtonsForm.Item>*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol xs={24} md={12}>
-            <WebsiteItem />
-          </BaseCol>
+          {/*<BaseCol xs={24} md={12}>*/}
+          {/*  <WebsiteItem />*/}
+          {/*</BaseCol>*/}
 
-          <BaseCol span={24}>
-            <SocialLinksItem />
-          </BaseCol>
+          {/*<BaseCol span={24}>*/}
+          {/*  <SocialLinksItem />*/}
+          {/*</BaseCol>*/}
         </BaseRow>
       </BaseButtonsForm>
     </BaseCard>

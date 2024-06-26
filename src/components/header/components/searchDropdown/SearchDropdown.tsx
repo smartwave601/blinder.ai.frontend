@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import {
+  SearchOutlined,
+} from '@ant-design/icons';
 import { FilterIcon } from 'components/common/icons/FilterIcon';
 import { SearchOverlay } from './searchOverlay/SearchOverlay/SearchOverlay';
 import { HeaderActionWrapper } from '@app/components/header/Header.styles';
@@ -52,7 +55,7 @@ export const SearchDropdown: React.FC<SearchOverlayProps> = ({
                 size="small"
                 type={isFilterOpen ? 'ghost' : 'text'}
                 aria-label="Filter"
-                icon={<FilterIcon />}
+                icon={<SearchOutlined />}
                 onClick={() => setFilterOpen(!isFilterOpen)}
               />
             }

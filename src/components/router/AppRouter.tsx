@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Routes, Route } from 'react-router-dom';
 
 // no lazy loading for auth pages to avoid flickering
 const AuthLayout = React.lazy(() => import('@app/components/layouts/AuthLayout/AuthLayout'));
@@ -27,6 +27,7 @@ const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'))
 const SecuritySettingsPage = React.lazy(() => import('@app/pages/SecuritySettingsPage'));
 const NotificationsPage = React.lazy(() => import('@app/pages/NotificationsPage'));
 const PaymentsPage = React.lazy(() => import('@app/pages/PaymentsPage'));
+const MyCertificationPage = React.lazy(() => import('@app/pages/MyCertificationPage'));
 const ButtonsPage = React.lazy(() => import('@app/pages/uiComponentsPages/ButtonsPage'));
 const SpinnersPage = React.lazy(() => import('@app/pages/uiComponentsPages/SpinnersPage'));
 const AvatarsPage = React.lazy(() => import('@app/pages/uiComponentsPages/dataDisplay/AvatarsPage'));
@@ -59,6 +60,8 @@ const LeafletMaps = React.lazy(() => import('@app/pages/maps/LeafletMapsPage/Lea
 const ReactSimpleMaps = React.lazy(() => import('@app/pages/maps/ReactSimpleMapsPage/ReactSimpleMapsPage'));
 const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/PigeonsMapsPage'));
 const Logout = React.lazy(() => import('./Logout'));
+const BlinderMainPage = React.lazy(() => import('@app/pages/Blinder/MainPage'));
+const SearchResultPage = React.lazy(() => import('@app/pages/Blinder/SearchResultPage'));
 
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
@@ -114,9 +117,14 @@ const PersonalInfo = withLoading(PersonalInfoPage);
 const SecuritySettings = withLoading(SecuritySettingsPage);
 const Notifications = withLoading(NotificationsPage);
 const Payments = withLoading(PaymentsPage);
+const MyCertifications = withLoading(MyCertificationPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
+
+const BlinderMain = withLoading(BlinderMainPage);
+const SearchResult = withLoading(SearchResultPage);
+
 
 export const AppRouter: React.FC = () => {
   const protectedLayout = (
@@ -126,10 +134,12 @@ export const AppRouter: React.FC = () => {
   );
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={'copyright'}>
       <Routes>
         <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
-          <Route index element={<NftDashboard />} />
+          <Route index element={<BlinderMain />} />
+          <Route path="certs" element={<SearchResult />} />
+          {/*<Route index element={<NftDashboard />} />*/}
           <Route path={MEDICAL_DASHBOARD_PATH} element={<MedicalDashboard />} />
           <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
@@ -152,6 +162,7 @@ export const AppRouter: React.FC = () => {
             <Route path="security-settings" element={<SecuritySettings />} />
             <Route path="notifications" element={<Notifications />} />
             <Route path="payments" element={<Payments />} />
+            <Route path="certifications" element={<MyCertifications />} />
           </Route>
           <Route path="ui-components">
             <Route path="button" element={<Buttons />} />

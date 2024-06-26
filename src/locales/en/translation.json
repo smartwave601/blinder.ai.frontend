@@ -1,4 +1,88 @@
 {
+  "blinder": {
+    "buttons": {
+      "export": "Export",
+      "upload": "Upload",
+      "reset": "Reset",
+      "fileCopyright": "File Copyright",
+      "createProtectButton": "Create New Voice Protect File",
+      "share": "Share",
+      "submit": "Submit",
+      "login": "Login",
+      "guest": "Search Certificate as a Guest",
+      "ok": "OK",
+      "save": "Save",
+      "cancel": "Cancel",
+      "close": "Close"
+    },
+    "text": {
+      "warning": "Warning",
+      "warningImplement": "Sorry, This action does not work at this time, try this later.",
+      "insertLink": "or insert link to your creative work",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "copyright": "By messaging through blinder, you agree to our Terms of Service and have read our Privacy Policy, © 2024 Clerkbridge, LLC. All rights reserved.",
+      "welcome": "Welcome to Blinder Copyright, with this tool you can protect the copyright of multimodal data that you submit to AI systems. First, select the type of data you are protecting, and fill in the additional information. Second, you will upload your data via this platform or API we will handle the rest. Third, you will receive a certificate from us for your records that establishes the initial chain of AI derivative works. This is your proof that you are the original author, and details on how your data is intended to be used. We will give you the option to file the copyright with the US Copyright Office, and other international copyright offices. Your licensees will be required to submit derivative works to this system, so that they can be attached to your chain of AI derivative works."
+    },
+    "certFormLabels": {
+      "dataType": "Select the type of data you are protecting:",
+      "natureOfWork": "What is the nature of the work?",
+      "workDescription": "Can you describe the type of work you want to copyright? (e.g., literary, musical, artistic, etc.)",
+      "creationDate": "When was the work created? What is the exact or approximate creation date of the work?",
+      "author": "Who is the author or creator of the work? Are there any co-authors or contributors? If so, what was their contribution?",
+      "ownershipDetails": "Ownership Details: Are you the sole owner of the work? If not, who are the other owners?",
+      "publicationStatus": "Publication Status: Has the work been published? If so, when and where?",
+      "priorVersions": "Existence of Prior Versions: Are there any previous versions of this work? How does the current work differ from them?",
+      "thirdPartyContent": "Use of Third-Party Content: Does the work include materials or content owned by someone else? If so, have you obtained the necessary permissions?",
+      "intendedUse": "Intended Use: How do you intend to use the work? Are there specific ways you plan to distribute or monetize it?",
+      "registrationObjectives": "Registration Objectives: What are your main objectives in registering this copyright? (e.g., protection against infringement, licensing, etc.)",
+      "digitalContent": "Digital Content: Is there a digital aspect to the work (e.g., software, online publication)? How is it stored and distributed?",
+      "externalAgreement": "External Agreement: Is this work being submitted as part of an external agreement? If so, could you provide details about this agreement?"
+    },
+    "certType": {
+      "cinema": "Complete Digital Cinema Package",
+      "video": "Video Files (jpg2000 encoded mxf)",
+      "audio": "Audio Files (5.1, 7.1, atmos)",
+      "meta": "Metadata Files (timed text, etc.)",
+      "script": "Script",
+      "drawing": "Drawing",
+      "photo": "Photograph",
+      "written": "Written Work",
+      "other": "Other Media"
+    },
+    "jurisdictions": {
+      "selectJurisdiction": "Select Jurisdiction",
+      "usCopyright": "US Copyright Office",
+      "ukCopyright": "UK Intellectual Property Office (IPO)",
+      "euCopyright": "European Union Intellectual Property Office (EUIPO)",
+      "canadaCopyright": "Canadian Intellectual Property Office (CIPO)",
+      "australiaCopyright": "IP Australia",
+      "japanCopyright": "Agency for Cultural Affairs (Japan)",
+      "chinaCopyright": "National Copyright Administration of the People's Republic of China (NCAC)",
+      "germanCopyright": "German Patent and Trade Mark Office (DPMA)",
+      "inpiCopyright": "National Institute of Industrial Property (INPI)",
+      "indiaCopyright": "Copyright Office, Department for Promotion of Industry and Internal Trade (India)",
+      "brazilCopyright": "National Library Foundation (FBN) (Brazil)",
+      "koreaCopyright": "Korea Copyright Commission (KCC)",
+      "mexicoCopyright": "National Institute of Copyright (INDAUTOR) (Mexico)",
+      "russiaCopyright": "Federal Service for Intellectual Property (Rospatent) (Russia)",
+      "spanishCopyright": "Spanish Patent and Trademark Office (OEPM)",
+      "italianCopyright": "Italian Copyright Office (SIAE)",
+      "boipCopyright": "Benelux Office for Intellectual Property (BOIP)",
+      "swissCopyright": "Swiss Federal Institute of Intellectual Property (IPI)",
+      "argentinaCopyright": "National Copyright Directorate (DNDA) (Argentina)",
+      "polandCopyright": "Copyright Division, Ministry of Culture and National Heritage (Poland)",
+      "turkeyCopyright": "Ministry of Culture and Tourism, Directorate General for Copyright (Turkey)",
+      "swedishCopyright": "Swedish Patent and Registration Office (PRV)",
+      "safCopyright": "Companies and Intellectual Property Commission (CIPC) (South Africa)",
+      "israelCopyright": "Israel Patent Office",
+      "singaporeCopyright": "Intellectual Property Office of Singapore (IPOS)",
+      "danishCopyright": "Danish Patent and Trademark Office",
+      "norwegianCopyright": "Norwegian Industrial Property Office (NIPO)",
+      "finnishCopyright": "Finnish Patent and Registration Office (PRH)",
+      "belgianCopyright": "Belgian Office for Intellectual Property (OPRI)"
+    }
+  },
   "alerts": {
     "accept": "Accept",
     "basic": "Basic alert",
@@ -492,7 +576,7 @@
       "successPayment": "Your payment was successfully made",
       "viewAll": "View all"
     },
-    "search": "Search"
+    "search": "Search by certification ID"
   },
   "inputs": {
     "basic": "Basic input",

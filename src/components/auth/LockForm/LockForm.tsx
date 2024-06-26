@@ -42,7 +42,7 @@ export const LockForm: React.FC = () => {
 
   const handleSubmit = ({ password }: LockFormData) => {
     setLoading(true);
-    dispatch(doLogin({ email: user?.email.name || '', password }))
+    dispatch(doLogin({ email: user?.email || '', password }))
       .unwrap()
       .then(() => {
         navigate(-1);
@@ -60,7 +60,7 @@ export const LockForm: React.FC = () => {
           <S.Time>{currentTime}</S.Time>
           <S.Date>{currentDate}</S.Date>
           <S.AvatarCircle>
-            <BaseAvatar src={user?.imgUrl} alt="user avatar" size={mobileOnly ? 59 : 77} />
+            {/*<BaseAvatar src={user?.imgUrl} alt="user avatar" size={mobileOnly ? 59 : 77} />*/}
           </S.AvatarCircle>
           <S.Name>{fullName}</S.Name>
         </S.ContentWrapper>

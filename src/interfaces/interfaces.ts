@@ -44,3 +44,35 @@ export interface PaymentCard {
   background: string;
   isEdit: boolean;
 }
+
+export interface SearchData {
+  keyword: string;
+  type: string;    // "search" or "fetch"
+  userID?: string;
+}
+
+export interface CertformData {
+  dataType?: string;
+  natureOfWork?: string;
+  workDescription?: string;
+  creationDate?: string;
+  author?: string;
+  ownershipDetails?: string;
+  publicationStatus?: string;
+  priorVersions?: string;
+  thirdPartyContent?: string;
+  intendedUse?: string;
+  registrationObjectives?: string;
+  digitalContent?: string;
+  externalAgreement?: string;
+}
+
+
+export interface ChatGPTPostData {
+  cert?: CertformData;
+  prevID?: string;
+  prompt?: string;
+  userID?: string;
+}
+
+

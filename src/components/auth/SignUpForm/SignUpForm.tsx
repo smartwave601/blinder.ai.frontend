@@ -10,12 +10,14 @@ import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './SignUpForm.styles';
+import { BaseButton, LinkButton } from "@app/components/common/BaseButton/BaseButton";
 
 interface SignUpFormData {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  role: string;
 }
 
 const initValues = {
@@ -112,13 +114,13 @@ export const SignUpForm: React.FC = () => {
             <Auth.FormCheckbox>
               <Auth.Text>
                 {t('signup.agree')}{' '}
-                <Link to="/" target={'_blank'}>
-                  <Auth.LinkText>{t('signup.termOfUse')}</Auth.LinkText>
-                </Link>{' '}
+                <LinkButton href="https://clerkbridge.com/privacy-policy/" target={'_blank'}>
+                  {t('signup.termOfUse')}
+                </LinkButton>{' '}
                 and{' '}
-                <Link to="/" target={'_blank'}>
-                  <Auth.LinkText>{t('signup.privacyOPolicy')}</Auth.LinkText>
-                </Link>
+                <LinkButton href="https://clerkbridge.com/tos" target={'_blank'}>
+                  {t('signup.privacyOPolicy')}
+                </LinkButton>
               </Auth.Text>
             </Auth.FormCheckbox>
           </BaseForm.Item>
@@ -128,22 +130,22 @@ export const SignUpForm: React.FC = () => {
             {t('common.signUp')}
           </Auth.SubmitButton>
         </BaseForm.Item>
-        <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <GoogleIcon />
-            </Auth.SocialIconWrapper>
-            {t('signup.googleLink')}
-          </Auth.SocialButton>
-        </BaseForm.Item>
-        <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <FacebookIcon />
-            </Auth.SocialIconWrapper>
-            {t('signup.facebookLink')}
-          </Auth.SocialButton>
-        </BaseForm.Item>
+        {/*<BaseForm.Item noStyle>*/}
+        {/*  <Auth.SocialButton type="default" htmlType="submit">*/}
+        {/*    <Auth.SocialIconWrapper>*/}
+        {/*      <GoogleIcon />*/}
+        {/*    </Auth.SocialIconWrapper>*/}
+        {/*    {t('signup.googleLink')}*/}
+        {/*  </Auth.SocialButton>*/}
+        {/*</BaseForm.Item>*/}
+        {/*<BaseForm.Item noStyle>*/}
+        {/*  <Auth.SocialButton type="default" htmlType="submit">*/}
+        {/*    <Auth.SocialIconWrapper>*/}
+        {/*      <FacebookIcon />*/}
+        {/*    </Auth.SocialIconWrapper>*/}
+        {/*    {t('signup.facebookLink')}*/}
+        {/*  </Auth.SocialButton>*/}
+        {/*</BaseForm.Item>*/}
         <Auth.FooterWrapper>
           <Auth.Text>
             {t('signup.alreadyHaveAccount')}{' '}

@@ -19,9 +19,9 @@ export const TotalEarning: React.FC = () => {
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    userId && getTotalEarning(userId, CurrencyTypeEnum.USD).then((res) => setTotalEarning(res));
-  }, [userId]);
+  // useEffect(() => {
+  //   userId && getTotalEarning(userId, CurrencyTypeEnum.USD).then((res) => setTotalEarning(res));
+  // }, [userId]);
 
   const { totalEarningData, days } = useMemo(
     () => ({

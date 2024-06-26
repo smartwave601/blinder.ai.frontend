@@ -95,3 +95,10 @@ export const Button = styled(AntButton)<BtnProps>`
       `};
     `}
 `;
+
+export const LinkButton = styled.a`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;

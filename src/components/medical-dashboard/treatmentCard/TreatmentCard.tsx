@@ -22,9 +22,9 @@ export const TreatmentCard: React.FC = () => {
 
   const user = useAppSelector((state) => state.user.user);
 
-  useEffect(() => {
-    user && getUserCalendar(user?.id).then((res) => setCalendar(res));
-  }, [user]);
+  // useEffect(() => {
+  //   user && getUserCalendar(user?.id).then((res) => setCalendar(res));
+  // }, [user]);
 
   const { i18n, t } = useTranslation();
 

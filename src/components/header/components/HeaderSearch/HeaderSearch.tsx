@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+
 import { useLocation } from 'react-router';
+import { Input } from 'antd';
+import { addDeferredPrompt } from '@app/store/slices/pwaSlice'
 import { SearchDropdown } from '../searchDropdown/SearchDropdown';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { components as configComponents, Component } from '@app/constants/config/components';
 import { categoriesList, CategoryType } from '@app/constants/categoriesList';
 import { useResponsive } from '@app/hooks/useResponsive';
+import { setKeyword } from '@app/store/slices/searchSlice';
 import * as S from './HeaderSearch.styles';
-
+const { Search } = Input;
 export interface CategoryComponents {
   category: CategoryType;
   components: Component[];
@@ -14,8 +21,11 @@ export interface CategoryComponents {
 
 export const HeaderSearch: React.FC = () => {
   const { mobileOnly, isTablet } = useResponsive();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   const [query, setQuery] = useState('');
   const [components] = useState<Component[]>(configComponents);
@@ -39,6 +49,12 @@ export const HeaderSearch: React.FC = () => {
     setModalOpen(false);
     setOverlayOpen(false);
   }, [pathname]);
+
+  const onSearch = (value: string) => {
+    console.log(value);
+    dispatch(setKeyword({keyword: value, type: 'search'}));
+    navigate('/certs');
+  }
 
   return (
     <>
@@ -67,12 +83,19 @@ export const HeaderSearch: React.FC = () => {
       )}
 
       {isTablet && (
-        <SearchDropdown
-          query={query}
-          setQuery={setQuery}
-          data={sortedResults}
-          isOverlayOpen={isOverlayOpen}
-          setOverlayOpen={setOverlayOpen}
+        // <SearchDropdown
+        //   query={query}
+        //   setQuery={setQuery}
+        //   data={sortedResults}
+        //   isOverlayOpen={isOverlayOpen}
+        //   setOverlayOpen={setOverlayOpen}
+        // />
+        <Search
+          placeholder={t('header.search')}
+          allowClear
+          enterButton="Search"
+          onSearch={onSearch}
+          style={{ width: 400 }}
         />
       )}
     </>

@@ -7,13 +7,14 @@ import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { doResetPassword } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
+import { BaseModal } from "@app/components/common/BaseModal/BaseModal";
 
 interface ForgotPasswordFormData {
   email: string;
 }
 
 const initValues = {
-  email: 'chris.johnson@altence.com',
+  email: '',
 };
 
 export const ForgotPasswordForm: React.FC = () => {
@@ -23,16 +24,21 @@ export const ForgotPasswordForm: React.FC = () => {
   const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (values: ForgotPasswordFormData) => {
-    setLoading(true);
-    dispatch(doResetPassword(values))
-      .unwrap()
-      .then(() => {
-        navigate('/auth/security-code');
-      })
-      .catch((err) => {
-        notificationController.error({ message: err.message });
-        setLoading(false);
-      });
+
+    BaseModal.warning({
+      title: t('blinder.text.warning'),
+      content: t('blinder.text.warningImplement'),
+    });
+    // setLoading(true);
+    // dispatch(doResetPassword(values))
+    //   .unwrap()
+    //   .then(() => {
+    //     navigate('/auth/security-code');
+    //   })
+    //   .catch((err) => {
+    //     notificationController.error({ message: err.message });
+    //     setLoading(false);
+    //   });
   };
 
   return (

@@ -194,4 +194,11 @@ export default createGlobalStyle`
     border-right: 0;
   }
   // notifications end
+  
+  .layout-center-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
