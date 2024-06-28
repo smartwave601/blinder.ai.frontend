@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Input, Modal, Radio, Select, Upload, Checkbox, Progress, Space, Divider } from "antd";
 import type { CheckboxProps } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 
 import { useTranslation } from 'react-i18next';
@@ -37,6 +38,7 @@ interface IProps {
   onClose: () => void;
   onSubmitVoice: () => void;
   onSubmitGeneratedSpeech: () => void;
+  onSubmitCustomFile: () => void;
   onOpenCertificationModal?: () => void;
   prevCertRecordID: string;
   chatGPTData: string;
@@ -48,6 +50,7 @@ export const AddDerivativeModal: React.FC<IProps> = ({
                                                        onClose,
                                                        onSubmitVoice,
                                                        onSubmitGeneratedSpeech,
+                                                       onSubmitCustomFile,
                                                        onOpenCertificationModal,
                                                        prevCertRecordID,
                                                        chatGPTData,
@@ -83,6 +86,10 @@ export const AddDerivativeModal: React.FC<IProps> = ({
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder|null>(null);
   const [hasNewVoice, setHasNewVoice] = useState(false);
   const [hasNewSpeech, setHasNewSpeech] = useState(false);
+
+
+  const [isCustomFileUploading, setIsCustomFileUploading] = useState(false);
+  const [customFileUploadProgress, setCustomFileUploadProgress] = useState(0);
 
   useEffect(() => {
     if (isProtectModalOpen) {
@@ -438,6 +445,61 @@ export const AddDerivativeModal: React.FC<IProps> = ({
   }
   /*************************************************/
 
+  const showCustomFileUploadSuccess = () => {
+    onSubmitCustomFile();
+    notificationController.success({ message: 'Upload Success.' });
+  }
+  const showCustomFileUploadError = () => {
+    onSubmitCustomFile();
+    notificationController.error({ message: 'Upload Failed.' });
+  }
+  const uploadCustomFile = (file:RcFile) => {
+    if (prevCertRecordID == '') {
+      notificationController.error({ message: 'You should submit your certifications first before upload your work.' });
+      return;
+    }
+    if (!user) {
+      notificationController.error({ message: 'Login required.' });
+      return;
+    }
+    setIsCustomFileUploading(true);
+    try {
+      const xhr = new XMLHttpRequest();
+      const fd = new FormData()
+
+      fd.append('file', file);
+      fd.append('cert_id', prevCertRecordID);
+      fd.append('user_id', user.email);
+      fd.append('m_type', 'local');
+      fd.append('meta', file.name);
+
+      xhr.upload.addEventListener("progress", (event) => {
+        setCustomFileUploadProgress(((event.loaded / event.total) * 100))
+      });
+
+      xhr.addEventListener("loadend", (evt) => {
+        setIsCustomFileUploading(false);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          showCustomFileUploadSuccess();
+        } else {
+          showCustomFileUploadError();
+        }
+      });
+      xhr.open("POST", `${BlinderAPIBasePath}/Prod/v1/VoiceProtect`, true);
+      xhr.send(fd);
+    } catch (e) {
+      console.error(e);
+      setIsCustomFileUploading(false);
+    }
+  }
+
+  const props: UploadProps = {
+    beforeUpload: file => {
+      uploadCustomFile(file);
+      return false;
+    },
+  };
+
   return (
     <BaseModal
       centered
@@ -452,37 +514,42 @@ export const AddDerivativeModal: React.FC<IProps> = ({
       ]}
     >
       <Space direction="vertical" size="small">
-        <BaseTypography.Title level={4} >Record yourself:</BaseTypography.Title>
-        <BaseTypography.Text >Record yourself saying the following script and singing the following lyrics. Blinder will generate a unique voice ID and pattern for you that you can use to protect your voice likeness:</BaseTypography.Text>
-        <BaseTypography.Text >Say: How now brown cow?</BaseTypography.Text>
-        <BaseTypography.Text >Sing: Twinkle Twinkle Little Star</BaseTypography.Text>
+        <BaseTypography.Title level={4}>Record yourself:</BaseTypography.Title>
+        <BaseTypography.Text>Record yourself saying the following script and singing the following lyrics. Blinder will
+          generate a unique voice ID and pattern for you that you can use to protect your voice
+          likeness:</BaseTypography.Text>
+        <BaseTypography.Text>Say: How now brown cow?</BaseTypography.Text>
+        <BaseTypography.Text>Sing: Twinkle Twinkle Little Star</BaseTypography.Text>
         <BaseRow>
           <BaseCol flex="450px">
-            <BaseRow style={{marginBottom: "8px"}}>
-              <Checkbox checked={isRecordingAutoUpload} onChange={OnIsRecordingAutoUploadChange}>Upload my voice automatically</Checkbox>
+            <BaseRow style={{ marginBottom: "8px" }}>
+              <Checkbox checked={isRecordingAutoUpload} onChange={OnIsRecordingAutoUploadChange}>Upload my voice
+                automatically</Checkbox>
             </BaseRow>
             <Space size="middle">
-            { isRecording?(
-              <DefaultButton size="middle" onClick={onStopRecordingClicked}>Stop Recording</DefaultButton>
-            ):(
-              <DefaultButton size="middle" onClick={onStartRecordingClicked}>Start Recording</DefaultButton>
-            )}
-            <DefaultButton danger={hasNewVoice} size="middle" onClick={onVoiceSavingClicked} loading={isRecUploading} >Save</DefaultButton>
+              {isRecording ? (
+                <DefaultButton size="middle" onClick={onStopRecordingClicked}>Stop Recording</DefaultButton>
+              ) : (
+                <DefaultButton size="middle" onClick={onStartRecordingClicked}>Start Recording</DefaultButton>
+              )}
+              <DefaultButton danger={hasNewVoice} size="middle" onClick={onVoiceSavingClicked}
+                             loading={isRecUploading}>Save</DefaultButton>
             </Space>
           </BaseCol>
           <BaseCol flex="auto">
-            <BaseRow style={{marginBottom: "8px"}}>
-              <BaseTypography.Text>Recording Time:</BaseTypography.Text><BaseTypography.Text>{voiceRecTime}</BaseTypography.Text>
+            <BaseRow style={{ marginBottom: "8px" }}>
+              <BaseTypography.Text>Recording
+                Time:</BaseTypography.Text><BaseTypography.Text>{voiceRecTime}</BaseTypography.Text>
             </BaseRow>
             <BaseRow>
               <audio src={recordedAudio} style={{ "width": "100%" }} controls></audio>
             </BaseRow>
           </BaseCol>
-          <Progress percent={voiceUploadProgress} showInfo={false} />
+          {voiceUploadProgress > 0 ? <Progress percent={voiceUploadProgress} showInfo={false} /> : null}
         </BaseRow>
       </Space>
       <Divider dashed />
-      <Space direction="vertical" size="small" style={{width: '100%'}}>
+      <Space direction="vertical" size="small" style={{ width: '100%' }}>
         <Space size="middle">
           <BaseTypography.Title level={4}>Transform your text into speech with</BaseTypography.Title>
           <Select
@@ -503,21 +570,29 @@ export const AddDerivativeModal: React.FC<IProps> = ({
           <BaseCol flex="450px">
             <Space size="middle">
               <DefaultButton onClick={onGenerateSpeechClicked} loading={t2sButtonLoading}>Generate</DefaultButton>
-              <DefaultButton danger={hasNewSpeech} onClick={onGeneratedSpeechSavingClicked} loading={isSpeechUploading}>Save</DefaultButton>
+              <DefaultButton danger={hasNewSpeech} onClick={onGeneratedSpeechSavingClicked}
+                             loading={isSpeechUploading}>Save</DefaultButton>
             </Space>
           </BaseCol>
           <BaseCol flex="auto">
-            <audio src={text2speechAudio} style={{"width": "100%"}} controls></audio>
+            <audio src={text2speechAudio} style={{ "width": "100%" }} controls></audio>
           </BaseCol>
-          <Progress percent={speechUploadProgress} showInfo={false} />
+          {speechUploadProgress > 0? <Progress percent={speechUploadProgress} showInfo={false} /> : null}
         </BaseRow>
       </Space>
-      {showCertificateInfo?(
+      <Divider dashed />
+      <BaseRow>
+        <Upload {...props} showUploadList={false}>
+          <DefaultButton icon={<UploadOutlined />} loading={isCustomFileUploading}>Click to Upload</DefaultButton>
+        </Upload>
+        {customFileUploadProgress > 0 ? <Progress percent={customFileUploadProgress} /> : null}
+      </BaseRow>
+      {showCertificateInfo ? (
         <>
           <Divider dashed />
-          <BaseRow style={{marginBottom: "0.5rem"}}>
+          <BaseRow style={{ marginBottom: "0.5rem" }}>
             <BaseCol flex="1 1 200px">
-              <BaseTypography.Title level={4} >Your Certificate</BaseTypography.Title>
+              <BaseTypography.Title level={4}>Your Certificate</BaseTypography.Title>
             </BaseCol>
             <BaseCol flex="0 1 300px">
               <BaseRow justify="end">
@@ -527,13 +602,13 @@ export const AddDerivativeModal: React.FC<IProps> = ({
           </BaseRow>
           <S.StyledRow align="center">
             <S.Bubble>
-              <BaseTypography.Paragraph ellipsis={{ rows: 5, expandable: true}} style={{"color": "white"}}>
+              <BaseTypography.Paragraph ellipsis={{ rows: 5, expandable: true }} style={{ "color": "white" }}>
                 {chatGPTData}
               </BaseTypography.Paragraph>
             </S.Bubble>
           </S.StyledRow>
         </>
-      ):(
+      ) : (
         <></>
       )}
     </BaseModal>

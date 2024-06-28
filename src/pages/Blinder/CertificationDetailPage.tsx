@@ -178,50 +178,11 @@ const SearchResultPage: React.FC = () => {
       a.click();
     };
     xhr.send();
-
-    // if (!certification.source || certification.source.itemID == '') {
-    //   return;
-    // }
-    // const link = document.createElement("a");
-    // link.download = certification.source.originalName;
-    // link.href = certification.source.sourcePath;
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-
-    // fetch(certification.source.sourcePath, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/pdf',
-    //   },
-    // })
-    //   .then((response) => response.blob())
-    //   .then((blob) => {
-    //     if (!certification.source) {
-    //       return;
-    //     }
-    //     // Create blob link to download
-    //     const url = window.URL.createObjectURL(
-    //       new Blob([blob]),
-    //     );
-    //     const link = document.createElement('a');
-    //     link.href = url;
-    //     link.setAttribute(
-    //       'download',
-    //       certification.source.originalName
-    //     );
-    //
-    //     // Append to html link element page
-    //     document.body.appendChild(link);
-    //
-    //     // Start download
-    //     link.click();
-    //
-    //     // Clean up and remove the link
-    //     link && link.parentNode && link.parentNode.removeChild(link);
-    //   }).catch(() => {
-    //     notificationController.error({"message": "could not download"});
-    // });
+  }
+  const setCustomFileStatus = () => {
+    if (certID) {
+      doDerivativeSearch(certID);
+    }
   }
 
   return (
@@ -297,6 +258,7 @@ const SearchResultPage: React.FC = () => {
         onClose={()=>setIsProtectModalOpen(false)}
         onSubmitVoice={setVoiceProtectStatus}
         onSubmitGeneratedSpeech={setSpeechGenerationStatus}
+        onSubmitCustomFile={setCustomFileStatus}
         prevCertRecordID={certID}
         chatGPTData={chatGPTResponse}
         showCertificateInfo={false}

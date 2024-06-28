@@ -27,6 +27,8 @@ import { CertformData } from "@app/interfaces/interfaces"
 import { getChatGptConnector } from "@app/api/blinder.api";
 import { BaseTypography } from "@app/components/common/BaseTypography/BaseTypography";
 
+import { CertificationDataTypes } from "@app/constants/global";
+
 import { CertificationForm } from './forms/CertificationForm';
 import { AddDerivativeModal } from './components/AddDerivativeModal';
 
@@ -183,7 +185,6 @@ const MainPage: React.FC = () => {
           return;
         }
         setSourceMediaType(fType);
-        debugger;
         const byteArray = new Uint8Array(reader.result as ArrayBuffer);
         const blobData = new Blob([byteArray], { type: file.type })
         setSourceBlob(blobData);
@@ -370,9 +371,14 @@ const MainPage: React.FC = () => {
 
     setCertFormValues(values);
     setCertDataSaving(true);
-
+    let dataType = '';
+    CertificationDataTypes.forEach((type)=>{
+      if (type.value == values.dataType) {
+        dataType = type.label;
+      }
+    });
     const inputData = `
-      Data Type: ${values.dataType}
+      Data Type: ${dataType}
       Nature of Work: ${values.natureOfWork}
       Work Description: ${values.workDescription}
       Creation Date: ${creationDate.format('ll')}
@@ -422,6 +428,9 @@ const MainPage: React.FC = () => {
   const setSpeechGenerationStatus = () => {
     setIsAISpeechUploaded(true);
   }
+  const setCustomFileStatus = () => {
+    void(0);
+  }
   /*************************************************/
 
   return (
@@ -455,30 +464,30 @@ const MainPage: React.FC = () => {
                 )}
                 &nbsp;Cert ID: {prevCertRecordID}
               </BaseRow>
-              <BaseRow align="middle" wrap={true}>
-                {isSourceUploaded?(
-                  <CheckCircleTwoTone twoToneColor="#52c41a"/>
-                ):(
-                  <CloseCircleTwoTone twoToneColor="#eb2f96"/>
-                )}
-                &nbsp;Source
-              </BaseRow>
-              <BaseRow align="middle" wrap={true}>
-                {isProtectVoiceUploaded?(
-                  <CheckCircleTwoTone twoToneColor="#52c41a"/>
-                ):(
-                  <CloseCircleTwoTone twoToneColor="#eb2f96"/>
-                )}
-                &nbsp;Voice Record
-              </BaseRow>
-              <BaseRow align="middle" wrap={true}>
-                {isAISpeechUploaded?(
-                  <CheckCircleTwoTone twoToneColor="#52c41a"/>
-                ):(
-                  <CloseCircleTwoTone twoToneColor="#eb2f96"/>
-                )}
-                &nbsp;AI Audio
-              </BaseRow>
+              {/*<BaseRow align="middle" wrap={true}>*/}
+              {/*  {isSourceUploaded?(*/}
+              {/*    <CheckCircleTwoTone twoToneColor="#52c41a"/>*/}
+              {/*  ):(*/}
+              {/*    <CloseCircleTwoTone twoToneColor="#eb2f96"/>*/}
+              {/*  )}*/}
+              {/*  &nbsp;Source*/}
+              {/*</BaseRow>*/}
+              {/*<BaseRow align="middle" wrap={true}>*/}
+              {/*  {isProtectVoiceUploaded?(*/}
+              {/*    <CheckCircleTwoTone twoToneColor="#52c41a"/>*/}
+              {/*  ):(*/}
+              {/*    <CloseCircleTwoTone twoToneColor="#eb2f96"/>*/}
+              {/*  )}*/}
+              {/*  &nbsp;Voice Record*/}
+              {/*</BaseRow>*/}
+              {/*<BaseRow align="middle" wrap={true}>*/}
+              {/*  {isAISpeechUploaded?(*/}
+              {/*    <CheckCircleTwoTone twoToneColor="#52c41a"/>*/}
+              {/*  ):(*/}
+              {/*    <CloseCircleTwoTone twoToneColor="#eb2f96"/>*/}
+              {/*  )}*/}
+              {/*  &nbsp;AI Audio*/}
+              {/*</BaseRow>*/}
             </Space>
           </BaseRow>
         </BaseCol>
@@ -600,6 +609,7 @@ const MainPage: React.FC = () => {
         onClose={()=>setIsProtectModalOpen(false)}
         onSubmitVoice={setVoiceProtectStatus}
         onSubmitGeneratedSpeech={setSpeechGenerationStatus}
+        onSubmitCustomFile={setCustomFileStatus}
         onOpenCertificationModal={() => setIsCertificationModalOpen(true)}
         prevCertRecordID={prevCertRecordID}
         chatGPTData={chatGPTResponse}

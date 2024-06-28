@@ -105,6 +105,7 @@ const SearchResultPage: React.FC = () => {
     {
       title: 'Action',
       dataIndex: 'act',
+      key: 'action',
       render: (_: string, record: ICertificationData) => (
         <Space size="middle">
           <Link to={`/cert?cert_id=${record.certID}`}>Details</Link>

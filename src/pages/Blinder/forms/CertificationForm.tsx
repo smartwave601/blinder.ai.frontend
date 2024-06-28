@@ -11,28 +11,14 @@ import { BaseForm } from "@app/components/common/forms/BaseForm/BaseForm";
 import { BaseImage } from "@app/components/common/BaseImage/BaseImage";
 import { BaseTypography } from "@app/components/common/BaseTypography/BaseTypography";
 import { DayjsDatePicker } from "@app/components/common/pickers/DayjsDatePicker";
+import { CertificationDataTypes } from "@app/constants/global";
 
 export const CertificationForm: React.FC = () => {
   const { t } = useTranslation();
-
-  const dataTypes = [
-    { value: 'CP', label: t('blinder.certType.cinema') },
-    { value: 'VF', label: t('blinder.certType.video') },
-    { value: 'AF', label: t('blinder.certType.audio') },
-    { value: 'MD', label: t('blinder.certType.meta') },
-    { value: 'SC', label: t('blinder.certType.script') },
-    { value: 'DR', label: t('blinder.certType.drawing') },
-    { value: 'PH', label: t('blinder.certType.photo') },
-    { value: 'WW', label: t('blinder.certType.written') },
-    { value: 'OT', label: t('blinder.certType.other') },
-  ];
-  const handleSubmit = () => {
-    return '';
-  }
+  const dataTypes = CertificationDataTypes;
 
   return (
     <>
-    {/*<BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional">*/}
       <BaseRow justify="center">
         <BaseImage src="https://basicannon.s3.amazonaws.com/blinder+Main+Logo.png" preview={false} style={{height: '70px'}} />
       </BaseRow>
@@ -66,8 +52,6 @@ export const CertificationForm: React.FC = () => {
         name="creationDate"
         label={t('blinder.certFormLabels.creationDate')}
       >
-        {/*<S.FormInput />*/}
-        {/*<DayjsDatePicker format="L" style={{"width": "100%"}} />*/}
         <DatePicker format="MM/DD/YYYY" style={{"width": "100%"}}></DatePicker>
       </S.FormItem>
       <S.FormItem
@@ -124,7 +108,6 @@ export const CertificationForm: React.FC = () => {
       >
         <S.FormInput />
       </S.FormItem>
-    {/*</BaseForm>*/}
     </>
   );
 };
