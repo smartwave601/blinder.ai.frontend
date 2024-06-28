@@ -62,6 +62,7 @@ const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/Pig
 const Logout = React.lazy(() => import('./Logout'));
 const BlinderMainPage = React.lazy(() => import('@app/pages/Blinder/MainPage'));
 const SearchResultPage = React.lazy(() => import('@app/pages/Blinder/SearchResultPage'));
+const CertificationDetailPage = React.lazy(() => import('@app/pages/Blinder/CertificationDetailPage'));
 
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
@@ -124,6 +125,7 @@ const LogoutFallback = withLoading(Logout);
 
 const BlinderMain = withLoading(BlinderMainPage);
 const SearchResult = withLoading(SearchResultPage);
+const CertificationDetail = withLoading(CertificationDetailPage);
 
 
 export const AppRouter: React.FC = () => {
@@ -139,6 +141,7 @@ export const AppRouter: React.FC = () => {
         <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
           <Route index element={<BlinderMain />} />
           <Route path="certs" element={<SearchResult />} />
+          <Route path="cert" element={<CertificationDetail />} />
           {/*<Route index element={<NftDashboard />} />*/}
           <Route path={MEDICAL_DASHBOARD_PATH} element={<MedicalDashboard />} />
           <Route path="apps">

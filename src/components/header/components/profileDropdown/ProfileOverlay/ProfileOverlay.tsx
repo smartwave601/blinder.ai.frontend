@@ -13,6 +13,10 @@ export const ProfileOverlay: React.FC = ({ ...props }) => {
       </S.Text>
       <S.ItemsDivider />
       <S.Text>
+        <Link to="/profile/certifications">My Certifications</Link>
+      </S.Text>
+      <S.ItemsDivider />
+      <S.Text>
         <Link to="/logout">{t('header.logout')}</Link>
       </S.Text>
     </div>

@@ -1,29 +1,31 @@
 import React from 'react';
+import { DatePicker, Select } from 'antd';
+import { useTranslation } from "react-i18next";
+
 import * as S from './Form.styles';
+
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { BaseButton, LinkButton } from "@app/components/common/BaseButton/BaseButton";
 import { BaseForm } from "@app/components/common/forms/BaseForm/BaseForm";
-import { useTranslation } from "react-i18next";
 import { BaseImage } from "@app/components/common/BaseImage/BaseImage";
 import { BaseTypography } from "@app/components/common/BaseTypography/BaseTypography";
-import { Select } from "antd";
+import { DayjsDatePicker } from "@app/components/common/pickers/DayjsDatePicker";
 
 export const CertificationForm: React.FC = () => {
   const { t } = useTranslation();
 
   const dataTypes = [
-    { value: 'cinema', label: t('blinder.certType.cinema') },
-    { value: 'video', label: t('blinder.certType.video') },
-    { value: 'audio', label: t('blinder.certType.audio') },
-    { value: 'meta', label: t('blinder.certType.meta') },
-    { value: 'script', label: t('blinder.certType.script') },
-    { value: 'drawing', label: t('blinder.certType.drawing') },
-    { value: 'photo', label: t('blinder.certType.photo') },
-    { value: 'written', label: t('blinder.certType.written') },
-    { value: 'other', label: t('blinder.certType.other') },
+    { value: 'CP', label: t('blinder.certType.cinema') },
+    { value: 'VF', label: t('blinder.certType.video') },
+    { value: 'AF', label: t('blinder.certType.audio') },
+    { value: 'MD', label: t('blinder.certType.meta') },
+    { value: 'SC', label: t('blinder.certType.script') },
+    { value: 'DR', label: t('blinder.certType.drawing') },
+    { value: 'PH', label: t('blinder.certType.photo') },
+    { value: 'WW', label: t('blinder.certType.written') },
+    { value: 'OT', label: t('blinder.certType.other') },
   ];
-
   const handleSubmit = () => {
     return '';
   }
@@ -64,7 +66,9 @@ export const CertificationForm: React.FC = () => {
         name="creationDate"
         label={t('blinder.certFormLabels.creationDate')}
       >
-        <S.FormInput />
+        {/*<S.FormInput />*/}
+        {/*<DayjsDatePicker format="L" style={{"width": "100%"}} />*/}
+        <DatePicker format="MM/DD/YYYY" style={{"width": "100%"}}></DatePicker>
       </S.FormItem>
       <S.FormItem
         name="author"

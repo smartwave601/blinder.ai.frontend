@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Input } from 'antd';
-import { Select } from 'antd';
+import { Link } from 'react-router-dom';
+import { Input, Space } from "antd";
 import { BaseButton, DefaultButton } from "@app/components/common/BaseButton/BaseButton";
 import { useTranslation } from "react-i18next";
 
@@ -9,8 +9,8 @@ import * as S from './Blinder.styles';
 import { useAppSelector } from "@app/hooks/reduxHooks";
 import { SearchData } from '@app/interfaces/interfaces';
 import {
-  CertificationData,
-  getCertification,
+  ICertificationData,
+  searchCertifications,
   DerivativeData,
   getDerivatives,
 } from "@app/api/blinder.api";
@@ -22,17 +22,20 @@ import { BaseTypography } from "@app/components/common/BaseTypography/BaseTypogr
 import { BaseTable } from "@app/components/common/BaseTable/BaseTable";
 import { BaseInput } from "@app/components/common/inputs/BaseInput/BaseInput";
 import { setKeyword } from "@app/store/slices/searchSlice";
+import { Dates } from "@app/constants/Dates";
 
 const { Search } = Input;
-
+const defaultSearchData = {
+  keyword: '',
+  type: '',
+  user: '',
+}
 const SearchResultPage: React.FC = () => {
   const { t } = useTranslation();
   const search = useAppSelector((state) => state.search.search);
-  const [searchCondition, setSearchCondition] = useState<SearchData>();
+  const [searchCondition, setSearchCondition] = useState<SearchData>(defaultSearchData);
   const [isSearching, setIsSearching] = useState(false);
-  const [searchResult, setSearchResult] = useState<CertificationData[]>([]);
-  const [derivatives, setDerivatives] = useState<DerivativeData[]>([]);
-
+  const [searchResult, setSearchResult] = useState<ICertificationData[]>([]);
 
   useEffect(() => {
     setSearchCondition(search);
@@ -43,35 +46,22 @@ const SearchResultPage: React.FC = () => {
   }, [search]);
 
   const doSearch = (search:SearchData) => {
-    // setIsSearching(true);
-    getCertification(search).then((responseData) => {
+    setIsSearching(true);
+    searchCertifications(search).then((responseData) => {
       setIsSearching(false);
       if (!responseData) {
         notificationController.error({ message: `Server connection failed` });
         return;
       }
-      if (responseData?.status == 0) {
-        notificationController.warning({ message: `Could not find certification.` });
+      if (responseData.status == 0) {
+        notificationController.warning({ message: `Error: ${responseData.message}` });
         return;
       }
       if (responseData?.certifications && responseData.certifications.Count > 0) {
         setSearchResult(responseData.certifications.Items);
-        getDerivatives({certID: responseData.certifications.Items[0].certID}).then((derivativeData)=> {
-          if (!derivativeData) {
-            notificationController.error({ message: `Server connection failed` });
-            return;
-          }
-          if (derivativeData?.status == 0) {
-            notificationController.warning({ message: `Could not find certInfo` });
-            return;
-          }
-          if (derivativeData?.list && derivativeData.list.Count > 0) {
-            setDerivatives(derivativeData.list.Items);
-          }
-        }).catch((e) => {
-          console.error(e);
-          notificationController.error({ message: e.message });
-        })
+      } else {
+        notificationController.warning({ message: `Could not find certifications.` });
+        setSearchResult([]);
       }
     }).catch((e) => {
       setIsSearching(false);
@@ -87,96 +77,69 @@ const SearchResultPage: React.FC = () => {
     setSearchCondition(newSearchCond);
     doSearch(newSearchCond);
   }
-  // const dataSource = [
-  //   {
-  //     key: '1',
-  //     name: 'Mike',
-  //     age: 32,
-  //     address: '10 Downing Street',
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'John',
-  //     age: 42,
-  //     address: '10 Downing Street',
-  //   },
-  // ];
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'itemID',
-      key: 'itemID',
+      title: 'Certification ID',
+      dataIndex: 'certID',
+      key: 'certID',
     },
     {
-      title: 'Type',
-      dataIndex: 'mType',
-      key: 'mType',
+      title: 'Data Type',
+      dataIndex: 'dataType',
+      key: 'dataType',
     },
     {
-      title: 'Path',
-      dataIndex: 's3Path',
-      key: 's3Path',
+      title: 'Nature of work',
+      dataIndex: 'natureOfWork',
+      key: 'natureOfWork',
     },
     {
-      title: 'Meta',
-      dataIndex: 'metaData',
-      key: 'metaData',
-    },
-    {
-      title: 'CreatedAt',
+      title: 'Created At',
       dataIndex: 'createdAt',
       key: 'createdAt',
+      render: (_:string, record:ICertificationData) => (
+        <>{Dates.format(record.createdAt, 'D MMMM YYYY HH:mm')}</>
+      )
     },
+    {
+      title: 'Action',
+      dataIndex: 'act',
+      render: (_: string, record: ICertificationData) => (
+        <Space size="middle">
+          <Link to={`/cert?cert_id=${record.certID}`}>Details</Link>
+        </Space>
+      ),
+    }
   ];
   return (
     <S.RightSideWrapper>
       <S.StyledRow align="center">
-        {/*<Search*/}
-        {/*  placeholder={t('header.search')}*/}
-        {/*  allowClear*/}
-        {/*  enterButton="Search"*/}
-        {/*  value={searchCondition?.keyword}*/}
-        {/*  onSearch={onSearchButtonClicked}*/}
-        {/*  loading={isSearching}*/}
-        {/*  style={{ width: 400 }}*/}
-        {/*/>*/}
+        <Search
+          placeholder={t('header.search')}
+          allowClear
+          enterButton="Search"
+          value={searchCondition.keyword}
+          onChange={(e) => setSearchCondition({
+            keyword: e.target.value,
+            type: 'search',
+            userID: '',
+          })}
+          onSearch={onSearchButtonClicked}
+          loading={isSearching}
+          style={{ width: '100%' }}
+        />
       </S.StyledRow>
-      {searchResult.map((item, index)=> (
-        <BaseRow key={index}>
-          <BaseCol md={12}>
-            <BaseRow>
-              ID: {item.certID}
-            </BaseRow>
-            <BaseRow>
-              Data Type: {item.dataType}
-            </BaseRow>
-            <BaseRow>
-              Created At: {item.createdAt}
-            </BaseRow>
-            <BaseRow>
-              <S.Bubble>
-                {item.chatGPT}
-              </S.Bubble>
-            </BaseRow>
-          </BaseCol>
-          <BaseCol md={12}>
-            <BaseRow>
-              <BaseTypography.Title level={3}>Derivatives</BaseTypography.Title>
-              <DefaultButton>Append</DefaultButton>
-            </BaseRow>
-            <BaseTable
-              columns={columns}
-              dataSource={derivatives}
-              // pagination={tableData.pagination}
-              // loading={tableData.loading}
-              // onChange={handleTableChange}
-              scroll={{ x: 800 }}
-              bordered
-            />
-          </BaseCol>
-        </BaseRow>
-      ))}
+      <BaseTable
+        columns={columns}
+        dataSource={searchResult}
+        // pagination={tableData.pagination}
+        // loading={tableData.loading}
+        // onChange={handleTableChange}
+        scroll={{ x: 800 }}
+        loading={isSearching}
+        bordered
+      />
     </S.RightSideWrapper>
   );
 };

@@ -56,9 +56,20 @@ export interface ChatGPTResponse {
   aiResponse: ChatGPTResponseFormat;
 }
 
-export interface CertificationData {
+export interface ISourceData {
+  certID: string,        // certification ID
+  itemID: string,        // source item ID
+  mType: string,         // media type: 'audio', 'image', 'video', 'other
+  originalName: string, // Source file's original Name
+  sourcePath: string,    // Source file uploaded Path
+  sType: string,         // Source type : 'internal'-uploaded file, 'external' - link supported file
+  userID: string,        // user id
+}
+
+export interface ICertificationData {
   pKey: string,
   certID: string,
+  UUID: string,
   userID: string,
   author: string,
   chatGPT: string,
@@ -75,16 +86,23 @@ export interface CertificationData {
   thirdPartyContent: string,
   workDescription: string,
   createdAt: string,
+  source?: ISourceData,
 }
 export interface CertificationList {
   Count: number,
-  Items: CertificationData[],
+  Items: ICertificationData[],
 }
 
 export interface CertificationResponse {
   status: number;
   message?: string;
   certifications?: CertificationList;
+}
+
+export interface ICertificationDataResponse {
+  status: number;
+  message?: string;
+  certification?: ICertificationData;
 }
 
 export interface IRequestGetDerivatives {
@@ -117,19 +135,40 @@ export interface IResponseGetDerivatives {
 }
 
 
-export const getChatGptConnector = (postData: ChatGPTPostData): Promise<ChatGPTResponse> => {
+export const getChatGptConnector = async (postData: ChatGPTPostData): Promise<ChatGPTResponse> => {
   return httpApi.post<ChatGPTResponse>('/Prod/v1/ChatGPT', { ...postData }).then(({ data }) => data);
 };
 
-export const getCertification = async (data:SearchData): Promise<CertificationResponse | undefined> => {
-  try {
-    const response = await axios.get<CertificationResponse>(BlinderAPIBasePath + '/Prod/v1/Certifications', { params: data });
-    return response.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (e: any) {
-    throw new Error(e);
-  }
+export const searchCertifications = async (data:SearchData): Promise<CertificationResponse> => {
+  return httpApi.get<CertificationResponse>('/Prod/v1/Certifications', { params: {...data} })
+    .then(({ data }) => data);
 };
+
+// export const searchCertifications = async (data:SearchData): Promise<CertificationResponse | undefined> => {
+//   try {
+//     const response = await axios.get<CertificationResponse>(BlinderAPIBasePath + '/Prod/v1/Certifications', { params: data });
+//     return response.data;
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
+
+export const getCertification = async (certID:string): Promise<ICertificationDataResponse> => {
+  return httpApi.get<ICertificationDataResponse>('/Prod/v1/Certifications', { params: {certID: certID, type: 'get'} })
+    .then(({ data }) => data);
+};
+//
+// export const getCertification = async (certUUID:string): Promise<ICertificationDataResponse | undefined> => {
+//   try {
+//     const response = await axios.get<ICertificationDataResponse>(
+//       BlinderAPIBasePath + '/Prod/v1/Certifications', { params: {uuid: certUUID, type: 'get'} });
+//     return response.data;
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
 
 export const getDerivatives = async (data:IRequestGetDerivatives): Promise<IResponseGetDerivatives | undefined> => {
   try {

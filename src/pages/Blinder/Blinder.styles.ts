@@ -90,7 +90,3 @@ export const Link = styled.a`
   flex-wrap: wrap;
   margin-bottom: 0;
 `;
-export const ExpandingDiv = styled.div`
-    height: 60px;
-    flex-grow: 2;
-`;

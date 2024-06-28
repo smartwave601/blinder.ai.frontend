@@ -1,4 +1,5 @@
 import { NumericLiteral } from 'typescript';
+import moment, { Moment } from 'moment';
 
 export type Dimension = number | string;
 
