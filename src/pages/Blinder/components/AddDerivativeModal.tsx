@@ -462,6 +462,10 @@ export const AddDerivativeModal: React.FC<IProps> = ({
       notificationController.error({ message: 'Login required.' });
       return;
     }
+    if (file.size > 10 * 1000 * 1000) {
+      notificationController.error({ message: 'File size is too large, please upload a file smaller than 10 MB.' });
+      return;
+    }
     setIsCustomFileUploading(true);
     try {
       const xhr = new XMLHttpRequest();
@@ -581,12 +585,16 @@ export const AddDerivativeModal: React.FC<IProps> = ({
         </BaseRow>
       </Space>
       <Divider dashed />
-      <BaseRow>
-        <Upload {...props} showUploadList={false}>
-          <DefaultButton icon={<UploadOutlined />} loading={isCustomFileUploading}>Click to Upload</DefaultButton>
-        </Upload>
+      <Space direction="vertical" size="middle" style={{width: "100%"}}>
+        <BaseTypography.Title level={4}>Upload your file:</BaseTypography.Title>
+        <BaseRow>
+          <Upload {...props} showUploadList={false}>
+            <DefaultButton icon={<UploadOutlined />} loading={isCustomFileUploading}>Click to Upload</DefaultButton>
+          </Upload>
+          <BaseTypography.Text type="warning" style={{lineHeight: "45px", paddingLeft: "20px"}}>(less than 10MB)</BaseTypography.Text>
+        </BaseRow>
         {customFileUploadProgress > 0 ? <Progress percent={customFileUploadProgress} /> : null}
-      </BaseRow>
+      </Space>
       {showCertificateInfo ? (
         <>
           <Divider dashed />
